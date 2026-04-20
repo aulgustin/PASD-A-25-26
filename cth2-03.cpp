@@ -8,9 +8,10 @@ void BUAT_SIMPUL(int X);
 void AWAL();
 void CETAK();
 void INSERTKANAN();
-struct Node			//Deklarasi struktur simPul {
+struct Node	{		//Deklarasi struktur simPul {
 	int INFO;
 	struct Node *LINK;	
+};
 typedef struct Node Simpul;
 Simpul *P, *FIRST, *LAST, *Q;	//menyiaPkan Pointer2 yg dPt menunjuk ke simPul
 int X;
@@ -55,7 +56,7 @@ void AWAL()	//Fungsi membuat simPul awal
 	LAST = P;
 	P -> LINK = NULL;	}
 	
-void INSERKANAN()	//Fungsi menginsert simPul disebelah kanan
+void INSERTKANAN()	//Fungsi menginsert simPul disebelah kanan
 {
 	LAST -> LINK = P;
 	LAST = P;

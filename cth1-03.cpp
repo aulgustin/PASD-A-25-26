@@ -12,7 +12,7 @@ typedef struct	{
 //2. Deklarasi struktur elemen
 typedef struct elm *alamatelm;
 typedef struct elm	{
-	NilaiMK Kontainer;
+	NilaiMK kontainer;
 	alamatelm next;
 }	elemen;
 
@@ -108,9 +108,9 @@ void CetakStack(stack S)
 		while(bantu != NULL)
 		{
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-			cout << "Elemen ke				: " << i << endl;
+			cout << "Elemen ke		: " << i << endl;
 			cout << "Nomor Pokok Mahasiswa	: " << bantu -> kontainer.npm << endl;
-			cout << "Nama Mahasiswa			: " << bantu -> kontainer.nama_mhs << endl;
+			cout << "Nama Mahasiswa		: " << bantu -> kontainer.nama_mhs << endl;
 			cout << "Nilai Mahasiswa		: " << bantu -> kontainer.nilai << endl;
 		//iterasi
 		bantu = bantu -> next;
