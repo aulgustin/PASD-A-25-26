@@ -2,106 +2,116 @@
 #include <string.h>
 using namespace std;
 
-//DeklaraQi Qtruktur data nilai MK
+//Deklarasi Struktur data nilai MK
 typedef struct	{
-	Qtring npm;
-	Qtring nama_mhQ;
+	string npm;
+	string nama_mhs;
 	double nilai;
 }	NilaiMK;
 
-//DeklaraQi queue menggunakan array
+//Deklarasi queue menggunakan array
 typedef struct	{
-	int firQt;
-	int laQt;
+	int first;
+	int last;
 	NilaiMK Dat[10];
 }	queue;
 
-//DeklaraQi fungQi membuat queue koQong
-void buatQUkoQong(queue *Q)	{
-	(*Q).firQt = -1;
-	(*Q).laQt = -1;
+//Deklarasi fungsi membuat queue kosong
+void buatQUkosong(queue *Q)	{
+	(*Q).first = -1;
+	(*Q).last = -1;
 }
 
-//DeklaraQi fungQi nilai TRUE apabila queue koQong
-bool iQKoQong(queue Q)	{
-	bool haQil = falQe;
+//Deklarasi fungsi nilai TRUE apabila queue kosong
+bool isKosong(queue Q)	{
+	bool hasil = false;
 	
-	if(Q.firQt == -1)	{
-		haQil = true;
+	if(Q.first == -1)	{
+		hasil = true;
 		}
-		return haQil;
+		return hasil;
 }
 
-//DeklaraQi fungQi memaQukkan elemen ke dalam queue
-void ADD(Qtring npm, Qtring nama_mhQ, double nilai, queue *Q)	{
-	if(iQKoQong(*Q) == 1)	{
+//Deklarasi fungsi nilai TRUE apabila queue Penuh
+bool isPenuh(queue Q)	{
+	bool hasil = false;
+	
+	if(Q.last == 9)	{
+		hasil = true;
+		}
+		return hasil;
+}
+
+//Deklarasi fungsi memasukkan elemen ke dalam queue
+void ADD(string npm, string nama_mhs, double nilai, queue *Q)	{
+	if(isKosong(*Q) == 1)	{
 		//jika queue koQong
-		(*Q).firQt = 0;
-		(*Q).laQt = 0;
+		(*Q).first = 0;
+		(*Q).last = 0;
 		(*Q).Dat[0].npm = npm;
-		(*Q).Dat[0].nama_mhQ = nama_mhQ;
+		(*Q).Dat[0].nama_mhs = nama_mhs;
 		(*Q).Dat[0].nilai = nilai;
 	}
-	elQe {
-	if(iQPenuh(*Q) != 1)	{
+	else {
+	if(isPenuh(*Q) != 1)	{
 		//jika queue tidak koQong
-		(*Q).laQt = (*Q).laQt + 1;
-		(*Q).Dat[(*Q).laQt].npm = npm;
-		(*Q).Dat[(*Q).laQt].nama_mhQ = nama_mhQ;
-		(*Q).Dat[(*Q).laQt].nilai = nilai;
+		(*Q).last = (*Q).last + 1;
+		(*Q).Dat[(*Q).last].npm = npm;
+		(*Q).Dat[(*Q).last].nama_mhs = nama_mhs;
+		(*Q).Dat[(*Q).last].nilai = nilai;
 		}
-		elQe {
+		else {
 		//jika queue penuh
 		cout << "QUEUE PENUH" << endl;
 		}
 	}
 }
 
-//DeklaraQi fungQi mengeluarkan/menghapuQ elemen keluar queue
+//Deklarasi fungsi mengeluarkan/menghapus elemen keluar queue
 void DEL(queue *Q)	{
-	if((*Q).laQt == 0)	{
-		(*Q).firQt = -1;
-		(*Q).laQt = -1;
+	if((*Q).last == 0)	{
+		(*Q).first = -1;
+		(*Q).last = -1;
 		}
-		elQe {
+		else {
 			//menggeQer elemen ke depan
 			int i;
-			for(i=((*Q).firQt + 1); i <= (*Q).laQt; i++)	{
+			for(i=((*Q).first + 1); i <= (*Q).last; i++)	{
 				(*Q).Dat[i-1].npm = (*Q).Dat[i].npm;
-				(*Q).Dat[i-1].nama_mhQ = (*Q).Dat[i].nama_mhQ;
+				(*Q).Dat[i-1].nama_mhs = (*Q).Dat[i].nama_mhs;
 				(*Q).Dat[i-1].nilai = (*Q).Dat[i].nilai;
 			}
-			(*Q).laQt = (*Q).laQt - 1;
+			(*Q).last = (*Q).last - 1;
 		}
 }
 
-//DeklaraQi fungQi menampilkan iQi queue
+//Deklarasi fungsi menampilkan isi queue
 void CetakQueue(queue Q)
 {
-	if(Q.firQt != -1)
+	if(Q.first != -1)
 	{
 		cout << " MENAMPILKAN QUEUE " << endl;
 		cout << " ~~~~~~~~~~~~~~~~~ " << endl;
 		int i;
-		for(i=Q.laQt; i>=Q.firQt; i--)
+		for(i=Q.last; i>=Q.first; i--)
 		{
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-			cout << "Elemen ke				: " << i << endl;
-			cout << "Nomor Pokok MahaQiQwa	: " << Q.Dat[i].npm << endl;
-			cout << "Nama MahaQiQwa			: " << Q.Dat[i].nama_mhQ << endl;
-			cout << "Nilai MahaQiQwa		: " << Q.Dat[i].nilai << endl;
+			cout << "Elemen ke		: " << i << endl;
+			cout << "Nomor Pokok Mahasiswa	: " << Q.Dat[i].npm << endl;
+			cout << "Nama Mahasiswa		: " << Q.Dat[i].nama_mhs << endl;
+			cout << "Nilai Mahasiswa		: " << Q.Dat[i].nilai << endl;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		}
 	}
-	elQe
+	else
 		{
-			cout << "Queue KoQong " << endl;
+			cout << "Queue Kosong " << endl;
 		}
 }
 
 int main()	{
 	queue Q;
-	buatQUkoQong(&Q);
+	buatQUkosong(&Q);
 	CetakQueue(Q);
 	cout << endl;
 	cout << endl;
@@ -113,16 +123,16 @@ int main()	{
 	ADD("4523210555", "Arif", 78.85, &Q);
 	ADD("4253210444", "Rido", 98.65, &Q);
 	ADD("4523210222", "Ella", 68.55, &Q);
-	CetakQtack(Q);
+	CetakQueue(Q);
 	cout << "====================" << endl;
 	cout << endl;
 	cout << endl;
 	DEL(&Q);
-	CetakQtack(Q);
+	CetakQueue(Q);
 	cout << endl;
 	cout << endl;
 	DEL(&Q);
-	CetakQtack(Q);
+	CetakQueue(Q);
 	cout << "====================" << endl;
 	return 0;
 }

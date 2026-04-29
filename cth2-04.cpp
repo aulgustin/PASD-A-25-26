@@ -32,6 +32,19 @@ do	{
 	cout << "2. Hapus Data" << endl;
 	cout << "3. Lihat Daftar Mahasiswa" << endl;
 	cout << "4. Hapus Semua Data" << endl;
+	cout << "5. Selesai"; cin >> pilih;
+	switch(pilih)	{
+		case '1' : mhs = entridata(); enqueue(mhs); break;
+		case '2' : cout << "Data yang dihapus	: " << endl;
+				mhs = dequeue(); display(mhs); break;
+		case '3' : baca(); break;
+		case '4' : init(); cout << "Data telah dikosongkan" << endl;
+				break;
+		case '5' : break;
+		default	 : cout << "Pilih 1 sd 5!";
+				break;
+	cout << " " << endl;
+	}
 } while(pilih != '5');
 return 0;	}
 
@@ -95,23 +108,7 @@ struct biodata entridata(void)	{
 }
 
 void display(struct biodata mhs)	{
-	int pilih;
 	cout << endl;
 	cout << "Nama	: " << mhs.nama << endl;
 	cout << "Usia	: " << mhs.usia << endl;
-	cout << "5. Selesai" << endl;
-	cout << "Pilih 1 sd 5 : " << endl;
-	cin >> pilih;
-	switch(pilih)	{
-		case '1' : mhs = entridata(); enqueue(mhs); break;
-		case '2' : cout << "Data yang dihapus : " << endl;
-				mhs = dequeue(); display(mhs); break;
-		case '3' : baca(); break;
-		case '4' : init(); cout << "Data telah dikosongkan" << endl;
-				break;
-		case '5' : break;
-		default : cout << "Pilih 1 sd 5!" << endl;
-				break;
-	}
-	cout << endl;
 }
