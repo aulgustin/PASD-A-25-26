@@ -1,33 +1,28 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 //1. Deklarasi struktur data nilai MK
 typedef struct	{
 	string npm;
 	string nama_mhs;
 	double nilai;
 }	NilaiMK;
-
 //2. Deklarasi struktur elemen
 typedef struct elm *alamatelm;
 typedef struct elm	{
 	NilaiMK Kontainer;
 	alamatelm next;
 } elemen;
-
 //3. Deklarasi struktur queue
 typedef struct	{
 	elemen *first;
 	elemen *last;
 }	queue;
-
 //4. Deklarasi fungsi membuat queue kosong
 void buatQUKosong(queue *Q)	{
 	(*Q).first = NULL;
 	(*Q).last = NULL;
 }
-
 //5. Deklarasi fungsi membuat queue kosong
 int isKosong(queue Q)	{
 	bool hasil = false;
@@ -37,7 +32,6 @@ int isKosong(queue Q)	{
 		}
 		return hasil;
 }
-
 //6. Deklarsi fungsi menghitung jumlah elemen queue
 int jmlElemen(queue Q)	{
 	int hasil = 0;
@@ -56,7 +50,6 @@ int jmlElemen(queue Q)	{
 		}
 		return hasil;
 }
-
 //7. Deklarasi fungsi memasukkan elemen ke dalam queue
 void add(string npm, string nama_mhs, double nilai, queue *Q)	{
 	elemen *info;
@@ -75,7 +68,6 @@ void add(string npm, string nama_mhs, double nilai, queue *Q)	{
 	(*Q).last = info;
 	info = NULL;
 }
-
 //8. Deklarasi fungsi mengeluarkan elemen keluar queue
 void del(queue *Q)	{
 	if((*Q).first != NULL)	{
@@ -93,7 +85,6 @@ void del(queue *Q)	{
 		delete hapus;
 		}
 }
-
 //9. Deklarasi fungsi menampilkan isi queue
 void CetakQueue(queue Q)
 {
@@ -120,7 +111,6 @@ void CetakQueue(queue Q)
 			cout << "Queue Kosong " << endl;
 		}
 }
-
 int main()	{
 	queue Q;
 	buatQUKosong(&Q);
@@ -147,4 +137,4 @@ int main()	{
 	CetakQueue(Q);
 	cout << "====================" << endl;
 	return 0;
-}
+} 
