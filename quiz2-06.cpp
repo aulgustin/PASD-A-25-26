@@ -1,4 +1,4 @@
-//Marge Sort
+//Marge Sort (ascending)
 
 #include <iostream>
 using namespace std;
@@ -44,7 +44,7 @@ void marge(int arr[], int Kiri, int mid, int Kanan)	{
 		k++;
 	}
 }
-	
+	 
 void margeSort(int arr[], int Kiri, int Kanan)	{
 	if (Kiri < Kanan)	{
 		int mid = Kiri + (Kanan - Kiri) / 2;

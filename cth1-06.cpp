@@ -1,4 +1,4 @@
-//Quick Sort
+//Quick Sort (ascending)
 
 #include <iostream>
 #include <string.h>

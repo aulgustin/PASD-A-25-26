@@ -1,4 +1,4 @@
-//Marge Sort
+//Marge Sort (ascending)
 
 #include <iostream>
 using namespace std;
