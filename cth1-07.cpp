@@ -42,7 +42,7 @@ void bubble_sort()
 	{
 		for(int j=n-1; j>=i; j--)
 		{
-			if(data[i]<data[j-1]) tukar(j, j-1);
+			if(data[j]<data[j-1]) tukar(j, j-1);
 		}
 		tampil();
 	}
